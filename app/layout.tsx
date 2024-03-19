@@ -5,6 +5,7 @@ import "./globals.css";
 import { ModalProvider } from "@/components/modal-provider";
 import { ToasterProvider } from "@/components/toaster-provider";
 import { CrispProvider } from "@/components/crisp-provider";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,19 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <CrispProvider />
+        <head>
+          <Script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-XTN1QCQ3RJ"
+          ></Script>
+          <Script id="google-analytics">
+            {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XTN1QCQ3RJ');`}
+          </Script>
+        </head>
         <body className={inter.className}>
           <ModalProvider />
           <ToasterProvider />
